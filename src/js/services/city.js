@@ -24,7 +24,7 @@ export class City {
         City.cities.unshift(this)
 
         //Ta bort den äldsta i array om mer än 6 st.
-        if(City.cities.length > 6) {
+        if(City.cities.length > 10) {
             City.cities.pop()
         }
     }

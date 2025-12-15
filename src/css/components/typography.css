@@ -2,46 +2,47 @@
 h1 {
     font-size: var(--font-size-xxl);
     text-align: center;
+    font-weight: 400;
 }
 
 h2 {
     font-size: var(--font-size-xl);
     text-align: center;
+    font-weight: 400;
 }
 
 h3 {
     font-size: var(--font-size-xl);
+    font-weight: 400;
+}
+
+h4 {
+    color: var(--color-muted);
 }
 
 /* ----- TEXT SIZES ----- */
-.weather-info p {
-    font-size: var(--font-size-xs);
-}
-
 .degrees {
-    font-size: 5rem;
+    font-size: 3rem;
     line-height: 1;
 }
 
-.degrees-icon {
-    font-size: var(--font-size-md);
+.history {
+    font-size: var(--font-size-lg);
+}
+
+.message {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    color: var(--color-muted);
 }
 
 /* ----- LAST BOX TYPOGRAPHY MODIFIERS ----- */
-.last-box .degrees {
-    font-size: 8rem;
-}
-
-.last-box .degrees-icon {
-    font-size: var(--font-size-xxl);
+.last-box .weather-container .degrees {
+    font-size: 6rem;
 }
 
 .last-box h3 {
     font-size: var(--font-size-xxl);
-}
-
-.last-box .weather-info p {
-    font-size: var(--font-size-sm);
 }
 
 /* ----- COLOR UTILITY ----- */

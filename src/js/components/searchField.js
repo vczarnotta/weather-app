@@ -1,12 +1,13 @@
 //Hämta inputvärdet och gör om formatet
 export function modifySearchValue() {
     const searchField = document.querySelector(".search-box__input")
-    const search = searchField.value
+    const search = searchField.value.trim()
 
-    //Gör första bokstaven stor och resten små
-    const modifiedSearchValue = search.charAt(0).toUpperCase() + search.substring(1).toLowerCase()
+    // Dela upp på mellanslag, gör första bokstaven i varje ord stor
+    const modifiedSearchValue = search
+    .split(" ")
+    .map(word => word.charAt(0).toUpperCase() + word.substring(1).toLowerCase())
+    .join(" ")
 
     return modifiedSearchValue
 }
-
-//Kanske lägga till så att det blir stor bokstav i första bokstaven för varje ord? Exempelvis New York, just nu blir det New york.

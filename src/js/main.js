@@ -21,6 +21,7 @@ function init() {
 //Visa vädret för den sökta platsen på hemsidan
 function displayWeather() {
     const searchField = document.querySelector(".search-box")
+    const searchInput = document.querySelector(".search-box__input")
 
     //Lyssna efter "enter" eller submitknapp på inputfältet
     searchField.addEventListener("submit", async (event) => {
@@ -34,6 +35,9 @@ function displayWeather() {
         //Skapa en ny instans av City för varje sökning
         const newCity = new City(cityName, currentWeather)
         showWeatherBox()
+
+        //Rensa sökfältet
+        searchInput.value = ""
     })
 }
 

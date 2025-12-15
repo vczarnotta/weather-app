@@ -3,8 +3,7 @@
     --color-primary: #023047;
     --color-secondary: #219ebc;
     --color-surface: #8ecae65e;
-    --color-accent: #fb8600c1;
-    --color-text: #fff;
+    --color-text: #ffffff;
     --color-muted: #e4e4e4;
 
 
@@ -43,12 +42,17 @@
     box-sizing: border-box;
 }
 
+/*Make the background fill the entire page without repeat.*/
+html, body {
+    min-height: 100%;
+}
+
 body {
     font-size: var(--font-size-base);
     font-family: sans-serif;
     overflow-y: scroll;
     line-height: 1.25;
     background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+    background-repeat: no-repeat;
     color: var(--color-text);
-    height: 100vh;
 }

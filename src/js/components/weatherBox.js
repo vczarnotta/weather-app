@@ -9,55 +9,63 @@ export function showWeatherBox() {
     historyContainer.innerHTML = ""
 
     City.cities.forEach((city, index) => {
-        let weatherBox = createWeatherBox(city)
+
+        //True om index är 0 annars false
+        let isLatest = index === 0
         
-        
-        if(index === 0) {
-            weatherBox.classList.add("last-box") //Lägg till klass för den nyaste sökningen för att kunna stylea annorlunda
-            latestContainer.appendChild(weatherBox)
-        } else {
-            weatherBox.classList.remove("last-box") //Ta bort gammal klass
-            historyContainer.appendChild(weatherBox)
-        }
+        const weatherBox = isLatest
+            ? createLargeWeatherBox(city) //Om true
+            : createSmallWeatherBox(city) //Om false
+
+        weatherBox.classList.toggle("last-box", isLatest)
+
+        let container = isLatest
+            ? latestContainer //Om true
+            : historyContainer //Om false
+
+        container.appendChild(weatherBox)
     });
 }
 
-export function createWeatherBox(city) {
+function createLargeWeatherBox(city) {
     //Skapa weatherbox
     const weatherBox = createNewElement("div", "", "weather-box")
 
     //Skapa div
-    const weatherContainer = createNewElement("div")
+    const weatherContainer = createNewElement("div", "", "weather-container")
     weatherBox.appendChild(weatherContainer)
 
     //Lägg till rubrik
     weatherContainer.appendChild(createNewElement("h3", `${city.city}`, "city-heading"))
 
-    //Skapa div
-    const weatherInfo = weatherContainer.appendChild(createNewElement("div", "", "weather-info"))
-
-    // //Lägg till väderinformation
-    weatherInfo.appendChild(createNewElement("p", `Uppdaterad ${city.time.slice(11)}`, "muted"))
-    weatherInfo.appendChild(createNewElement("p", `Vindstyrka: ${city.windspeed} m/s`))
-    weatherInfo.appendChild(createNewElement("p", `Riktning: ${city.winddirection}°`))
-    weatherInfo.appendChild(createNewElement("p", `Molnighet: ${city.cloudcover}%`))
-
-
-    //Om regn eller snö visa på sidan
-    if(city.rain > 0) {
-        weatherInfo.appendChild(createNewElement("p", `Regnfall: ${city.rain}%`))
-    }
-
-    if(city.snowfall > 0) {
-        weatherInfo.appendChild(createNewElement("p", `Snöfall: ${city.snowfall}%`))
-    }
-    
     //Lägg till temperatur
-    const degreesContainer = createNewElement("div", "", "degrees-container")
-    weatherBox.appendChild(degreesContainer)
+    weatherContainer.appendChild(createNewElement("p", `${Math.round(city.temperature)}°`, "degrees"))
 
-    degreesContainer.appendChild(createNewElement("p", `${Math.round(city.temperature)}`, "degrees"))
-    degreesContainer.appendChild(createNewElement("p", `°C`, "degrees-icon"))
+    //Lägg till tid för uppdatering
+    weatherContainer.appendChild(createNewElement("p", `Uppdaterad ${city.time.slice(11)}`, "muted"))
 
+    //Skapa div för vind
+    const windContainer = weatherBox.appendChild(createNewElement("div", "", "weather-info"))
+    windContainer.appendChild(createNewElement("h4", `Vind`))
+    windContainer.appendChild(createNewElement("p", `Vindstyrka: ${city.windspeed} m/s`))
+    windContainer.appendChild(createNewElement("p", `Riktning: ${city.winddirection}°`))
+
+    //Skapa div för nederbörd
+    const precipitationContainer = weatherBox.appendChild(createNewElement("div", "", "weather-info"))
+    precipitationContainer.appendChild(createNewElement("h4", `Nederbörd`))
+    precipitationContainer.appendChild(createNewElement("p", `Regnfall: ${city.rain}%`))
+    precipitationContainer.appendChild(createNewElement("p", `Snöfall: ${city.snowfall}%`))
+
+    //skapa div för molnighet
+    const cloudinessContainer = weatherBox.appendChild(createNewElement("div", "", "weather-info"))
+    cloudinessContainer.appendChild(createNewElement("h4", `Molnighet`))
+    cloudinessContainer.appendChild(createNewElement("p", `Molnighet: ${city.cloudcover}%`))
+
+    return weatherBox
+}
+
+function createSmallWeatherBox(city) {
+    const weatherBox = createNewElement("div", "", "weather-box")
+    weatherBox.appendChild(createNewElement("p", `${city.city} | ${city.temperature}°`, "history"))
     return weatherBox
 }

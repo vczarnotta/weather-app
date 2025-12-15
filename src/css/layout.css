@@ -9,13 +9,8 @@ body {
 }
 
 main {
-    display: grid;
-    place-content: center;
     justify-self: center;
     width: 90vw;
-    padding: var(--space-md);
-    background-color: var(--color-surface);
-    border-radius: var(--radius-xl);
     max-width: 1200px;
 }
 
@@ -25,10 +20,10 @@ main {
 
 #container__history {
     display: flex;
-    overflow-x: scroll;
     gap: var(--space-sm);
+    overflow-x: auto;
 }
 
-#container__history::-webkit-scrollbar {
-    display: none;
+h4 {
+    margin-bottom: var(--space-xs);
 }
