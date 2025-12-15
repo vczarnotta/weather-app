@@ -1,0 +1,15 @@
+/* Base (typsnitt, variabler, reset) */
+@import "./base.css";
+
+/* Typografi */
+@import "./components/typography.css";
+
+/* Layout */
+@import "./layout.css";
+
+/* Components */
+@import "./components/search-box.css";
+@import "./components/weather-box.css";
+
+/*Responsive*/
+@import "./responsive.css";

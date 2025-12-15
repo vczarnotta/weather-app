@@ -1,0 +1,50 @@
+/* ----- HEADINGS ----- */
+h1 {
+    font-size: var(--font-size-xxl);
+    text-align: center;
+}
+
+h2 {
+    font-size: var(--font-size-xl);
+    text-align: center;
+}
+
+h3 {
+    font-size: var(--font-size-xl);
+}
+
+/* ----- TEXT SIZES ----- */
+.weather-info p {
+    font-size: var(--font-size-xs);
+}
+
+.degrees {
+    font-size: 5rem;
+    line-height: 1;
+}
+
+.degrees-icon {
+    font-size: var(--font-size-md);
+}
+
+/* ----- LAST BOX TYPOGRAPHY MODIFIERS ----- */
+.last-box .degrees {
+    font-size: 8rem;
+}
+
+.last-box .degrees-icon {
+    font-size: var(--font-size-xxl);
+}
+
+.last-box h3 {
+    font-size: var(--font-size-xxl);
+}
+
+.last-box .weather-info p {
+    font-size: var(--font-size-sm);
+}
+
+/* ----- COLOR UTILITY ----- */
+.muted {
+    color: var(--color-muted);
+}

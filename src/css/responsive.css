@@ -1,0 +1,65 @@
+/* ----- DESKTOP ----- */
+@media (min-width: 800px) {
+
+    /*Main layout*/
+    main {
+        grid-template-columns: auto auto; /*Två kolumner*/
+        gap: var(--space-lg);
+        justify-content: center;
+    }
+    
+    #headings {
+        grid-column: 1 / -1; /*Headings tar full bredd*/
+    }
+
+    #container__history {
+        flex-direction: column; /*Vertikal lista i stället för horisontell*/
+        height: 60vh;
+        max-height: 600px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+
+    #container__latest {
+        margin: 0;
+    }
+
+    /*Weather box layout*/
+    .weather-box {
+        min-width: 300px;
+        width: 40vw;
+    }
+
+    .last-box {
+        height: 60vh;
+        max-height: 600px;
+        width: 40vw;
+    }
+
+    .degrees-container {
+        width: 100px;
+        justify-content: center;
+    }
+
+    /*Typografi*/
+    .last-box .weather-info p {
+        font-size: var(--font-size-md);
+    }
+
+    .last-box .weather-info {
+        gap: var(--space-sm);
+    }
+
+    .last-box .degrees {
+        font-size: 10rem;
+    }
+
+    .last-box .degrees-icon {
+        font-size: 3rem;
+    }
+
+    .last-box h3 {
+        font-size: 3rem;
+        margin-bottom: var(--space-lg);
+    }
+}

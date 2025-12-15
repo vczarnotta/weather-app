@@ -1,0 +1,34 @@
+header {
+    justify-self: center;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    padding: var(--space-xl) 0;
+}
+
+main {
+    display: grid;
+    place-content: center;
+    justify-self: center;
+    width: 90vw;
+    padding: var(--space-md);
+    background-color: var(--color-surface);
+    border-radius: var(--radius-xl);
+    max-width: 1200px;
+}
+
+#container__latest {
+    margin: var(--space-lg) 0;
+}
+
+#container__history {
+    display: flex;
+    overflow-x: scroll;
+    gap: var(--space-sm);
+}
+
+#container__history::-webkit-scrollbar {
+    display: none;
+}

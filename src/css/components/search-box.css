@@ -1,0 +1,31 @@
+.search-box {
+    position: relative;
+    margin-bottom: var(--space-lg);
+}
+
+.search-box__input {  
+    border: none;
+    height: 40px;
+    width: 90vw;
+    max-width: 600px;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-pill);
+}
+
+/* Ta bort "x" från inputfältet */
+.search-box__input::-webkit-search-cancel-button {
+    display: none;
+}
+
+.search-box__button img {
+    width: 16px;
+}
+
+.search-box__button {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 50%; /*Centrerar vertikalt i search-box*/
+    transform: translateY(-50%); /*Centrerar sig självt*/
+    right: 20px;
+}

@@ -1,0 +1,54 @@
+/* ----- WEATHER BOX ----- */
+.weather-box {
+    display: flex;
+    background-color: var(--color-surface);
+    padding: var(--space-md);
+    border-radius: var(--radius-lg);
+    justify-content: space-between;
+    max-width: 400px;
+    min-width: fit-content;
+    gap: var(--space-sm);
+}
+
+/* ----- WEATHER INFO GRID ----- */
+.weather-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.weather-info p {
+    margin-right: var(--space-sm);
+}
+
+.weather-info p:first-child {
+    grid-column: 1 / -1;
+    margin-bottom: var(--space-xs);
+}
+
+/* ----- DEGREES CONTAINER ----- */
+.degrees-container {
+    display: flex;
+}
+
+.degrees {
+    align-self: center;
+}
+
+/* ----- LAST BOX ----- */
+.last-box {
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    height: 350px;
+    max-width: 650px;
+    background-color: var(--color-accent);
+}
+
+.last-box .weather-info p:first-child {
+    margin-bottom: var(--space-md);
+}
+
+.last-box .weather-info p {
+    margin-right: 0;
+}
