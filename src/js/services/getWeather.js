@@ -23,7 +23,7 @@ export async function getWeather(city) {
 `;
     const weather = await fetchJSON(url);
 
-    return weather.current_weather;
+    return ({ weather: weather.current_weather, lat: lat, lon: lon });
 }
 
 async function fetchJSON(url) {

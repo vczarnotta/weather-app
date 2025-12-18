@@ -1,8 +1,10 @@
 export class City {
     static cities = [];
 
-    constructor(name, data) {
-        this.city = name;
+    constructor(name, data, lat, lon) {
+        this.name = name;
+        this.lat = lat;
+        this.lon = lon;
         this.time = data.time;
         this.temperature = Math.round(data.temperature);
         this.windspeed = Math.round(data.windspeed * 0.278);
@@ -14,7 +16,7 @@ export class City {
 
         //Kontrollera om den sökta staden redan finns och ersätt i så fall
         for (let i = 0; i < City.cities.length; i++) {
-            if (this.city === City.cities[i].city) {
+            if (this.name === City.cities[i].city) {
                 City.cities.splice(i, 1); //ta bort den gamla
                 break; //avsluta loop
             }
@@ -27,5 +29,21 @@ export class City {
         if (City.cities.length > 10) {
             City.cities.pop();
         }
+    }
+
+    //Uppdatera localStorage
+    static updateHistory() {
+        const history = City.cities.map(city => ({
+            name: city.name,
+            lat: city.lat,
+            lon: city.lon
+        }))
+        
+        localStorage.setItem("history", JSON.stringify(history))
+    }
+
+    //Hämta historiken
+    static getHistory() {
+        return JSON.parse(localStorage.getItem("history")) || []
     }
 }

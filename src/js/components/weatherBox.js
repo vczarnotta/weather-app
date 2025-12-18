@@ -1,14 +1,13 @@
 import { createNewElement } from "../utils/createElement.js";
-import { City } from "../models/city.js";
 
-export function showWeatherBox() {
+export function showWeatherBox(cities) {
     const latestContainer = document.querySelector("#container__latest");
     const historyContainer = document.querySelector("#container__history");
 
     latestContainer.innerHTML = "";
     historyContainer.innerHTML = "";
 
-    City.cities.forEach((city, index) => {
+    cities.forEach((city, index) => {
         //True om index är 0 annars false
         let isLatest = index === 0;
 
@@ -36,7 +35,7 @@ function createLargeWeatherBox(city) {
 
     //Lägg till rubrik
     weatherContainer.appendChild(
-        createNewElement("h3", `${city.city}`, "city-heading")
+        createNewElement("h3", `${city.name}`, "city-heading")
     );
 
     //Lägg till temperatur
@@ -88,7 +87,7 @@ function createLargeWeatherBox(city) {
 function createSmallWeatherBox(city) {
     const weatherBox = createNewElement("div", "", "weather-box");
     weatherBox.appendChild(
-        createNewElement("p", `${city.city} | ${city.temperature}°`, "history")
+        createNewElement("p", `${city.name} | ${city.temperature}°`, "history")
     );
     return weatherBox;
 }
