@@ -16,7 +16,7 @@ export class City {
 
         //Kontrollera om den sökta staden redan finns och ersätt i så fall
         for (let i = 0; i < City.cities.length; i++) {
-            if (this.name === City.cities[i].city) {
+            if (this.name === City.cities[i].name) {
                 City.cities.splice(i, 1); //ta bort den gamla
                 break; //avsluta loop
             }

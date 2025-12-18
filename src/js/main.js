@@ -20,9 +20,10 @@ async function init() {
         const data = await getWeather(city.name);
         const weather = data.weather
         const newCity = new City(city.name, weather, city.lat, city.lon);
-        const cities = City.cities
-        showWeatherBox(cities)
     }
+    
+    const cities = City.cities
+    showWeatherBox(cities)
 }
 
 //Visa vädret för den sökta platsen på hemsidan
