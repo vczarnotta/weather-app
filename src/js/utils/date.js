@@ -1,11 +1,32 @@
 export function getDayName(date) {
-    const dayNames = ["Söndag", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag"]
+    const dayNames = [
+        "Söndag",
+        "Måndag",
+        "Tisdag",
+        "Onsdag",
+        "Torsdag",
+        "Fredag",
+        "Lördag",
+    ];
 
-    return dayNames[date.getDay()]
+    return dayNames[date.getDay()];
 }
 
 export function getMonthName(date) {
-    const monthNames = ["Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"]
+    const monthNames = [
+        "Januari",
+        "Februari",
+        "Mars",
+        "April",
+        "Maj",
+        "Juni",
+        "Juli",
+        "Augusti",
+        "September",
+        "Oktober",
+        "November",
+        "December",
+    ];
 
-    return monthNames[date.getMonth()]
+    return monthNames[date.getMonth()];
 }
