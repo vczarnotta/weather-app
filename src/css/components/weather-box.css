@@ -35,6 +35,7 @@
     flex-shrink: 0;
     padding: var(--space-md) var(--space-xxl);
     scroll-snap-align: start;
+    cursor: pointer;
 }
 
 /*Scrollbar*/
