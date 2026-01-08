@@ -1,7 +1,7 @@
 # 🌦️ Weather App
 En webbaserad väderapplikation byggd i vanilla JavaScript som hämtar och visar aktuellt väder för sökta städer.
 Applikationen visar den senast sökta staden i en större vy och sparar de 10 senaste sökningarna i lokal lagring.
-> 📌 Uppgiften var ursprungligen en gruppuppgift från Chas Academy, men denna implementation är helt gjord av mig själv i syfte att öva JavaScript, modulär kodstruktur och API-hantering.
+> 📌 Uppgiften var ursprungligen en gruppuppgift från Chas Academy, men denna implementation är helt gjord av mig själv i syfte att öva JavaScript, modulär kodstruktur och API-hantering och objektorienterad programmering.
 
 ## 🚀 Funktioner
 - 🔍 Sök väder på stad
