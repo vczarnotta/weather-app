@@ -6,13 +6,13 @@ export class City {
         this.lat = lat;
         this.lon = lon;
         this.time = data.time;
-        this.temperature = Math.round(data.temperature);
-        this.windspeed = Math.round(data.windspeed * 0.278);
-        this.winddirection = Math.round(data.winddirection);
+        this.temperature = Math.round(data.temperature_2m);
+        this.windspeed = Math.round(data.wind_speed_10m * 0.278);
+        this.winddirection = Math.round(data.wind_direction_10m);
         //lagt in provisoriska värden nedan då dessa inte finns i openMeteo
-        this.cloudcover = Math.round(70);
-        this.rain = Math.round(1.2);
-        this.snowfall = Math.round(0.0);
+        this.cloudcover = Math.round(data.cloud_cover);
+        this.rain = Math.round(data.rain);
+        this.snowfall = Math.round(data.snowfall);
 
         //Kontrollera om den sökta staden redan finns och ersätt i så fall
         for (let i = 0; i < City.cities.length; i++) {

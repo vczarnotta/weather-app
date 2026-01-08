@@ -1,9 +1,11 @@
+import { enableHistoryClick } from "./components/historyClick.js";
+import { showWeatherBox } from "./components/weatherBox.js";
+import { City } from "./models/city.js";
 import { getWeather } from "./services/getWeather.js";
 import { modifySearchValue } from "./utils/searchField.js";
-import { City } from "./models/city.js";
 import { getDayName, getMonthName } from "./utils/date.js";
 import { createNewElement } from "./utils/createElement.js";
-import { showWeatherBox } from "./components/weatherBox.js";
+
 
 //Körs när sidan laddats
 async function init() {
@@ -16,12 +18,13 @@ async function init() {
 
     //Visa historik från localStorage
     const history = City.getHistory();
-    for(const city of history) {
+    for(const city of history.reverse()) {
         const data = await getWeather(city.name);
         const weather = data.weather
         const newCity = new City(city.name, weather, city.lat, city.lon);
     }
     
+    //reverse gör så det hamnar i rätt ordning
     const cities = City.cities
     showWeatherBox(cities)
 }
@@ -54,6 +57,24 @@ function displayWeather() {
     });
 }
 
+//Visa staden från historiken som stor när man klickar på den
+async function handleHistoryClick() {
+    const historyContainer = document.querySelector("#container__history")
+
+    //Lyssna efter klick på föräldrarelementet
+    historyContainer.addEventListener("click", (event) => {
+        const weatherBox = event.target.closest(".weather-box");
+        //Om man klickar utanför boxarna
+        if (!weatherBox) return;
+
+        const cityName = weatherBox.dataset.city;
+        
+        //Anropa modul med logik
+        enableHistoryClick(cityName)
+    })
+}
+
 // ----- KÖR FUNKTIONER -----
 init();
 displayWeather();
+handleHistoryClick()

@@ -21,6 +21,10 @@ export function showWeatherBox(cities) {
             ? latestContainer //Om true
             : historyContainer; //Om false
 
+        //Lägg till dataset för att kunna göra klickbar
+        weatherBox.dataset.city = city.name
+
+        //Visa på sidan
         container.appendChild(weatherBox);
     });
 }
@@ -45,7 +49,7 @@ function createLargeWeatherBox(city) {
 
     //Lägg till tid för uppdatering
     weatherContainer.appendChild(
-        createNewElement("p", `Uppdaterad ${city.time.slice(11)}`, "muted")
+        createNewElement("p", `Lokal tid: ${city.time.slice(11)}`, "muted")
     );
 
     //Skapa div för vind
@@ -66,10 +70,10 @@ function createLargeWeatherBox(city) {
     );
     precipitationContainer.appendChild(createNewElement("h4", `Nederbörd`));
     precipitationContainer.appendChild(
-        createNewElement("p", `Regnfall: ${city.rain}%`)
+        createNewElement("p", `Regnfall: ${city.rain} mm`)
     );
     precipitationContainer.appendChild(
-        createNewElement("p", `Snöfall: ${city.snowfall}%`)
+        createNewElement("p", `Snöfall: ${city.snowfall} cm`)
     );
 
     //skapa div för molnighet

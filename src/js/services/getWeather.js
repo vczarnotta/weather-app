@@ -19,11 +19,11 @@ export async function getWeather(city) {
     const lon = cityResults.results[0].longitude;
 
     //Hämta väder med hjälp av lat och lon
-    url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=Europe/Stockholm
+    url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,cloud_cover,rain,snowfall,wind_speed_10m,wind_direction_10m&timezone=auto&forecast_days=1&wind_speed_unit=ms
 `;
     const weather = await fetchJSON(url);
 
-    return ({ weather: weather.current_weather, lat: lat, lon: lon });
+    return ({ weather: weather.current, lat: lat, lon: lon });
 }
 
 async function fetchJSON(url) {
