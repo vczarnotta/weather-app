@@ -27,15 +27,14 @@ src/
 │   ├── components/  
 │   ├── base.css  
 │   ├── layout.css  
-│   ├── style.css  
+│   └── style.css  
 ├── js/  
 │   ├── components/  
 │   ├── models/  
 │   ├── services/  
 │   ├── utils/  
 │   └── main.js  
-├── index.html  
-└── README.md
+└── index.html  
 ```
 ## 📸 UI-beskrivning
 - Den senast sökta staden visas i en större vädervy
