@@ -6,8 +6,8 @@
 }
 
 .loader span {
-    width: var(--space-sm);;
-    height: var(--space-sm);;
+    width: var(--space-sm);
+    height: var(--space-sm);
     background: var(--color-secondary);
     border-radius: var(--radius-pill);
     animation: pulse 1.4s infinite ease-in-out;

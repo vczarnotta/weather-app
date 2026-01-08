@@ -33,17 +33,17 @@ export class City {
 
     //Uppdatera localStorage
     static updateHistory() {
-        const history = City.cities.map(city => ({
+        const history = City.cities.map((city) => ({
             name: city.name,
             lat: city.lat,
-            lon: city.lon
-        }))
-        
-        localStorage.setItem("history", JSON.stringify(history))
+            lon: city.lon,
+        }));
+
+        localStorage.setItem("history", JSON.stringify(history));
     }
 
     //Hämta historiken
     static getHistory() {
-        return JSON.parse(localStorage.getItem("history")) || []
+        return JSON.parse(localStorage.getItem("history")) || [];
     }
 }

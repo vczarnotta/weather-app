@@ -22,7 +22,7 @@ export function showWeatherBox(cities) {
             : historyContainer; //Om false
 
         //Lägg till dataset för att kunna göra klickbar
-        weatherBox.dataset.city = city.name
+        weatherBox.dataset.city = city.name;
 
         //Visa på sidan
         container.appendChild(weatherBox);
