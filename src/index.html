@@ -10,7 +10,7 @@
 <body>
     <header>
         <form class="search-box">
-            <input class="search-box__input" type="search" name="search" placeholder="Sök på stad...">
+            <input class="search-box__input" type="search" name="search" placeholder="Sök på stad..." autocomplete="off">
             <button class="search-box__button" type="submit"><img src="./assets/icons/search.svg" alt="sökikon"></button>
         </form>
         <p class="message"></p>
@@ -20,6 +20,10 @@
         <div id="headings">
             <h1>Vädret idag</h1>
             <!--Underrubrik-->
+        </div>
+
+        <div id="loader" class="loader hidden">
+            <!--Laddar-symbol-->
         </div>
         
         <div id="container__latest">

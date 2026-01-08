@@ -10,3 +10,4 @@
 /* Components */
 @import "./components/search-box.css";
 @import "./components/weather-box.css";
+@import "./components/loader.css"

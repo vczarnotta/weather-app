@@ -5,6 +5,7 @@ import { getWeather } from "./services/getWeather.js";
 import { modifySearchValue } from "./utils/searchField.js";
 import { getDayName, getMonthName } from "./utils/date.js";
 import { createNewElement } from "./utils/createElement.js";
+import { showLoader, hideLoader } from "./utils/loader.js";
 
 
 //Körs när sidan laddats
@@ -16,17 +17,22 @@ async function init() {
     const subHeading = createNewElement("h2", text, "muted");
     headingsContainer.appendChild(subHeading);
 
-    //Visa historik från localStorage
-    const history = City.getHistory();
-    for(const city of history.reverse()) {
-        const data = await getWeather(city.name);
-        const weather = data.weather
-        const newCity = new City(city.name, weather, city.lat, city.lon);
-    }
+    showLoader()
     
-    //reverse gör så det hamnar i rätt ordning
-    const cities = City.cities
-    showWeatherBox(cities)
+    try {
+        //Visa historik från localStorage
+        const history = City.getHistory();
+
+        for(const city of history.reverse()) {
+            const data = await getWeather(city.name);
+            const weather = data.weather
+            const newCity = new City(city.name, weather, city.lat, city.lon);
+        } 
+
+        showWeatherBox(City.cities)
+    } finally {
+        hideLoader()
+    }
 }
 
 //Visa vädret för den sökta platsen på hemsidan
@@ -38,22 +44,27 @@ function displayWeather() {
     searchField.addEventListener("submit", async (event) => {
         //Stoppa sidan från att laddas om
         event.preventDefault();
+        showLoader()
 
-        //Hämta sökvärdet och väder
-        const cityName = modifySearchValue();
-        const data = await getWeather(cityName);
-        const weather = data.weather
-        const lat = data.lat
-        const lon = data.lon
+        try {
+            //Hämta sökvärdet och väder
+            const cityName = modifySearchValue();
+            const data = await getWeather(cityName);
+            const weather = data.weather
+            const lat = data.lat
+            const lon = data.lon
+        
+            //Skapa en ny instans av City för varje sökning
+            const newCity = new City(cityName, weather, lat, lon);
+            City.updateHistory();
+            const cities = City.cities
+            showWeatherBox(cities);
     
-        //Skapa en ny instans av City för varje sökning
-        const newCity = new City(cityName, weather, lat, lon);
-        City.updateHistory();
-        const cities = City.cities
-        showWeatherBox(cities);
-
-        //Rensa sökfältet
-        searchInput.value = "";
+            //Rensa sökfältet
+            searchInput.value = "";
+        } finally {
+            hideLoader()
+        }
     });
 }
 
@@ -68,7 +79,7 @@ async function handleHistoryClick() {
         if (!weatherBox) return;
 
         const cityName = weatherBox.dataset.city;
-        
+
         //Anropa modul med logik
         enableHistoryClick(cityName)
     })
